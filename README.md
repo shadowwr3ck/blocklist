@@ -1,8 +1,8 @@
 # blocklist
 
-PREREQUSITES 
+PREREQUISITES 
 
-`sudo apt install iptables ipset `
+`sudo apt install iptables ipset`
 
 Firewall 
 rules.v4 with predefined iptable rules
@@ -23,3 +23,6 @@ Create the ipset block name.
 Download the blocklists.
 Insert the blocklists into a directory you specified.
 Re-Enable your firewall.
+
+
+There are variables within the script that you can configure for your liking.

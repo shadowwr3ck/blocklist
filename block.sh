@@ -65,25 +65,26 @@ fi
 
 
 	if [ $filetime -lt $two_days_ago ]; then
-	
-curl "$domain$zonefile1" -o "$zonedir$zonefile1"
-echo -e "${YELLOW} Downloaded singapore zone and added to $zonedir ${NC}"
-curl "$domain$zonefile2" -o "$zonedir$zonefile2"
-echo -e "${YELLOW} Downloaded Japan zone and added to $zonedir ${NC}"
-curl "$domain$zonefile3" -o "$zonedir$zonefile3"
-echo -e "${YELLOW} Downloaded China zone and added to $zonedir ${NC}"
-curl "$domain$zonefile4" -o "$zonedir$zonefile4"
-echo -e "${YELLOW} Downloaded France zone and added to $zonedir ${NC}"
-curl "$domain$zonefile5" -o "$zonedir$zonefile5"
-echo -e "${YELLOW} Downloaded Vietnam Zone and added to $zonedir ${NC}"
-curl "$domain$zonefile6" -o "$zonedir$zonefile6" 
 
-#curl "$cflare" -o "$zonedir/cflare.zone"
-#echo "${amazon_get}"
-#echo -e "${YELLOW} Downloaded Amazon IP BLOCK"
+  echo "${YELLOW} Zones files are already downloaded & newer than 2 days . Exiting ${NC}"
 
-	else
-echo "${YELLOW} Zones files are already downloaded & newer than 2 days . Exiting ${NC}"
+else
+
+
+	curl "$domain$zonefile1" -o "$zonedir$zonefile1"
+	echo -e "${YELLOW} Downloaded singapore zone and added to $zonedir ${NC}"
+	curl "$domain$zonefile2" -o "$zonedir$zonefile2"
+	echo -e "${YELLOW} Downloaded Japan zone and added to $zonedir ${NC}"
+	curl "$domain$zonefile3" -o "$zonedir$zonefile3"
+	echo -e "${YELLOW} Downloaded China zone and added to $zonedir ${NC}"
+	curl "$domain$zonefile4" -o "$zonedir$zonefile4"
+	echo -e "${YELLOW} Downloaded France zone and added to $zonedir ${NC}"
+	curl "$domain$zonefile5" -o "$zonedir$zonefile5"
+	echo -e "${YELLOW} Downloaded Vietnam Zone and added to $zonedir ${NC}"
+	curl "$domain$zonefile6" -o "$zonedir$zonefile6" 
+	#curl "$cflare" -o "$zonedir/cflare.zone"
+	#echo "${amazon_get}"
+	#echo -e "${YELLOW} Downloaded Amazon IP BLOCK"
 
 fi
 
@@ -96,7 +97,7 @@ echo -e "for i in $(cat $zonedir$zonefile2 ); do ipset add sn $i; done"
 echo -e "for i in $(cat $zonedir$zonefile3 ); do ipset add jp $i; done"
 echo -e "for i in $(cat $zonedir$zonefile4 ); do ipset add vn $i; done"
 echo -e "for i in $(cat $zonedir$zonefile5 ); do ipset add fr $i; done"
-echo -e "for i in $(cat $zonedir$zonefile6); do ipset add ru $i; done"
+echo -e "for i in $(cat $zonedir$zonefile6 ); do ipset add ru $i; done"
 #echo -e "for i in $(cat $zonedir$amazon ); do ipset add amazon $i; done"
 else
 echo  " ${YELLOW} Ipset and zones exist ${NC}.  ${GREEN}Ending and enabling firewall ${NC}"
